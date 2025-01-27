@@ -206,7 +206,7 @@
         <h3 class="heading">Contact <span>Me</span></h3>
 
 
-        <form action="https://api.web3forms.com/submit" method="POST" onsubmit="clearForm(this)">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
             <div class="input-group">
                 <div class="input-box">
                     <input type="hidden" name="access_key" value="623af66c-df36-4aff-8814-c8a594f40597">
@@ -225,11 +225,30 @@
         </form>
 
         <script>
-            function clearForm(form) {
-                form.reset(); // Clears the form fields
-                }
-        </script>
-    </section>
+            document.querySelector("#contactForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+        
+                const formData = new FormData(this);
+
+        // Send form data to Web3Forms
+                fetch(this.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then((response) => {
+                          if (response.ok) {
+                                alert("Message sent successfully!");
+                                this.reset(); // Reset the form only after submission succeeds
+                           } else {
+                                alert("There was an error sending your message. Please try again.");
+                             }
+                           })
+                            .catch((error) => {
+                                alert("An unexpected error occurred: " + error.message);
+                            });
+                    });
+          </script>
 
 
     <footer class="footer">
