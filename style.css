@@ -644,7 +644,7 @@ span{
     }
     .home{
         flex-direction: column-reverse;
-        margin: 5rem 4rem;
+        margin: 3rem 1rem;
     }
     .home-content h2{
         font-size: 2.6rem;
@@ -670,7 +670,7 @@ span{
 }
 @media(max-width: 600px) {
     .home-img {
-        transform: scale(2.2) translateY(+0px);    
+        transform: scale(2.5) translateY(+0px);    
         margin-top: 0 auto;
     }
 }
