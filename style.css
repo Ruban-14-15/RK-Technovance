@@ -670,7 +670,7 @@ span{
 }
 @media(max-width: 600px) {
     .home-img {
-        transform: scale(2.3) translate(+8px);    
+        transform: scale(2.4) translate(+10px);    
         margin-top: 0 auto;
     }
 }
