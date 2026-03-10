@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RK Technovance</title>
+    <title>Responsive Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel='stylesheet'>
 </head>
@@ -136,9 +136,8 @@
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
-
                     </div>
-                    
+                    <p><a href="https://drive.google.com/file/d/12OhcSs064K2sz9kcUCbJaXfKjm3xjMhb/view?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">👉Link Here</a></p>
                 </div>
 
                 <div class="certifications-item">
@@ -152,12 +151,12 @@
                         <i class='bx bxs-star-half' id="star" ></i>
                         
                     </div>
-                    
+                    <p><a href="https://drive.google.com/file/d/1Q8ZvkOWaKqRUK52oNUcrX9kYUQJiPmGS/view?usp=drive_link" target="_blank" style="text-decoration: none; color: inherit;">👉Link Here</a></p>
                 </div>
 
                 <div class="certifications-item">
-                    <img src="img/linux edx.webp" alt="">
-                    <h3><a href="https://drive.google.com/file/d/1WL7Pr_HGzzoZgsa1yvqE1TY-xDWTPWKK/view?usp=drive_link" target="_blank" style="text-decoration: none; color: inherit;">Introduction to Linux at the Linux Foundation EDX</a></h3>
+                    <img src="img/DATA ENGINEERING.png" alt="">
+                    <h3><a href="https://drive.google.com/file/d/1mCdpjnAUyHXRwdvnQS5gQxEjhyv8rZmw/view?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">Introduction to Data Engineering at IBM<a/></h3>
                     <div class="rating">
                         <i class='bx bxs-star' id="star"></i>
                         <i class='bx bxs-star' id="star"></i>
@@ -166,7 +165,7 @@
                         <i class='bx bx-star' id="star"></i>
                         
                     </div>
-                    
+                    <p><a href="https://drive.google.com/file/d/1mCdpjnAUyHXRwdvnQS5gQxEjhyv8rZmw/view?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">👉Link Here</a></p>
                 </div>
 
                 <div class="certifications-item">
@@ -180,7 +179,7 @@
                         <i class='bx bxs-star-half' id="star" ></i>
                         
                     </div>
-                    
+                    <p><a href="https://drive.google.com/file/d/1WPjfEfLBVg92gev95NozpBigzZPvtkYy/view?usp=drive_link" target="_blank" style="text-decoration: none; color: inherit;">👉Link Here</a></p>
                 </div>
 
                 <div class="certifications-item">
@@ -194,6 +193,7 @@
                         <i class='bx bx-star' id="star"></i>
                         
                     </div>
+                     <p><a href="https://drive.google.com/file/d/1WXwRdUT2PlDwb6n7EcZJN1ezXOsQOXIC/view?usp=drive_link" target="_blank" style="text-decoration: none; color: inherit;">👉Link Here</a></p>
                 </div>
 
 
@@ -205,10 +205,9 @@
         <h3 class="heading">Contact <span>Me</span></h3>
 
 
-        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <form name="submit-to-google-sheet">
             <div class="input-group">
                 <div class="input-box">
-                    <input type="hidden" name="access_key" value="623af66c-df36-4aff-8814-c8a594f40597">
                     <input type="text" name="FullName" placeholder="Full Name" required>
                     <input type="email" name="EmailID" placeholder="Email ID" required>
                 </div>
@@ -222,32 +221,7 @@
                 <input type="submit" value="Send Message" class="btn">
             </div>
         </form>
-
-        <script>
-            document.querySelector("#contactForm").addEventListener("submit", function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-        
-                const formData = new FormData(this);
-
-        // Send form data to Web3Forms
-                fetch(this.action, {
-                    method: "POST",
-                    body: formData,
-                })
-                    .then((response) => {
-                          if (response.ok) {
-                                alert("Message sent successfully!");
-                                this.reset(); // Reset the form only after submission succeeds
-                           } else {
-                                alert("There was an error sending your message. Please try again.");
-                             }
-                           })
-                            .catch((error) => {
-                                alert("An unexpected error occurred: " + error.message);
-                            });
-                    });
-          </script>
+    </section>
 
 
     <footer class="footer">
@@ -280,11 +254,26 @@
         </p>
     </footer>
 
+
     <script src="script.js"></script>
 
 
-
-
+<!--     <form name="submit-to-google-sheet">
+        <input name="email" type="email" placeholder="Email" required>
+        <button type="submit">Send</button>
+      </form> -->
+      
+      <script>
+        const scriptURL = '<SCRIPT URL>'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 
 
 </body>
