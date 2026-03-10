@@ -412,7 +412,7 @@ span{
 .certifications .heading{
     margin-bottom: 5rem;
 }
-.certifications-box img{
+.certifications-box img {
     width: 140px;
     height: 140px;
     border-radius: 25%;
@@ -421,8 +421,8 @@ span{
 }
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
 }
 .certifications-item{
     min-height: 450px;
@@ -430,13 +430,13 @@ span{
     background: rgba(0, 0, 0, 0.7);
     border: 3px solid rgba(238, 238, 238, 0.2);
     border-radius: 2rem;
-    margin: 0 2rem;
-    padding: 30px 60px;
+    margin: 0 1rem;
+    padding: 30px 50px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
     gap: 1.5rem;
     color: white;
@@ -447,11 +447,37 @@ span{
     transform: translateY(-10px)scale(1.03);
     box-shadow: 0 0 50px var(--main-color);
 }
-.certifications-item h3{
+.certifications-item h3,
+.certifications-item p,
+.certifications-item .stars,
+.certifications-item .link {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+.certifications-item h3 {
     font-size: 2rem;
 }
-.certifications-item p{
+
+.certifications-item p {
     font-size: 1.5rem;
+}
+
+/* Optional: stars and link styling */
+.certifications-item .stars {
+    color: gold;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.certifications-item .link {
+    margin-top: auto;            /* pushes link to bottom if cards have different text lengths */
+    font-size: 1.4rem;
+    color: var(--main-color);
+    text-decoration: none;
+
 }
 #star{
     color: gold;
@@ -644,13 +670,15 @@ span{
     }
     .home{
         flex-direction: column-reverse;
-        margin: 3rem 1rem;
+        margin: 5rem 4rem;
+	margin: 3rem 3;
+        resize: none;
     }
     .home-content h2{
         font-size: 2.6rem;
     }
     .home-content h1{
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin-top: 3rem;
     }
     .home-content p{
@@ -670,7 +698,9 @@ span{
 }
 @media(max-width: 600px) {
     .home-img {
-        transform: scale(2.4) translateY(+5px);    
+	height: auto;
+        transform: scale(2.5) translateY(+10);    
         margin-top: 0 auto;
+	
     }
 }
