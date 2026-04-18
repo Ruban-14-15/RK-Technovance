@@ -256,40 +256,44 @@
 
 
 <script>
-    // ✅ Correct Web App URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw4r4dOhgEIJbZq0GgARqK3F16rs8YMlxkQFIR4zgrBb65qxqmjzm_wTnzychMBe32whA/exec';
-    
-    const form = document.getElementById('contactForm');
-    const statusDiv = document.getElementById('formStatus');
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkQTUK2_a--zGdT6gjTWx35zR_x7dNPn0wau3ypdg7JMGouatjMnY_lBc2B9y1ousa/exec';
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+const form = document.getElementById('contactForm');
+const statusDiv = document.getElementById('formStatus');
 
-        // Show loading
-        statusDiv.style.display = 'block';
-        statusDiv.textContent = '⏳ Sending...';
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        const formData = new FormData(form);
+    statusDiv.style.display = 'block';
+    statusDiv.textContent = '⏳ Sending...';
 
-        try {
-            await fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formData
-            });
+    const formData = new FormData(form);
 
-            // Success message
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
             statusDiv.textContent = '✅ Message sent successfully!';
+            statusDiv.className = 'form-status success';
             form.reset();
-
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 4000);
-
-        } catch (error) {
-            statusDiv.textContent = '❌ Error sending message!';
+        } else {
+            throw new Error(result.message || "Something went wrong");
         }
-    });
+
+    } catch (error) {
+        statusDiv.textContent = '❌ Failed: ' + error.message;
+        statusDiv.className = 'form-status error';
+    }
+
+    setTimeout(() => {
+        statusDiv.style.display = 'none';
+    }, 5000);
+});
 </script>
 
 
